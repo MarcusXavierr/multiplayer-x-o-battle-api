@@ -12,15 +12,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 @CrossOrigin
 public class GameController {
-  private final RoomRepository roomRepository;
+    private final RoomRepository roomRepository;
 
     public GameController(RoomRepository roomRepository) {
         this.roomRepository = roomRepository;
     }
-  
+
     @MessageMapping("/room-joined/{id}")
-    @SendTo("/topic/room-joined/{id}")
+    @SendTo("/message-broker/room-joined/{id}")
     public boolean joinRoom(@DestinationVariable String id) {
-       return true;
+        return true;
+    }
+
+    @MessageMapping("/rooms/{id}")
+    @SendTo("/message-broker/rooms/{id}")
+    public MoveRecord sendMove(@DestinationVariable String id, MoveRecord moveRecord) {
+        return moveRecord;
     }
 }
