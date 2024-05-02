@@ -1,4 +1,4 @@
-package dev.marcusxavier.xobattleapi.onlinegame;
+package dev.marcusxavier.xobattleapi.multiplayer;
 
 public record MoveRecord(Integer position, Integer piece, Boolean belongsToWinnerPath, String userId) {
 }

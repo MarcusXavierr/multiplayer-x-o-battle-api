@@ -1,4 +1,4 @@
-package dev.marcusxavier.xobattleapi.onlinegame;
+package dev.marcusxavier.xobattleapi.multiplayer;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
