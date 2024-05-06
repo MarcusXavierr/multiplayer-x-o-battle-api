@@ -25,4 +25,14 @@ public class RoomController {
     private Room createRoom(@RequestBody Room room) {
        return repository.save(room);
     }
+  
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT) 
+    private void deleteRoom(@PathVariable String id) {
+      if (repository.findByRoomId(id).isEmpty()) {
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Room not found");
+      }
+
+      repository.deleteByRoomId(id);
+    }
 }
